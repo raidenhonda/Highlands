@@ -1,0 +1,278 @@
+<html>
+<head>
+<style>
+html {
+    height: 100%;
+}
+body {
+    max-height: 100%;
+    height: 100%;
+    width: 95%;
+    margin: 20px 0 25px 10px;
+    overflow-y: scroll;
+    background: #fff;
+    font: 16px/21px Helvetica, sans-serif;
+    color: #444;
+    -webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
+    -webkit-text-size-adjust: 100%;
+}
+body.focusInput {
+    max-height: none;
+    height: auto;
+    position: relative;
+}
+#location-list, #event-list, #event-details, #message-list {
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+/* #Typography
+ ================================================== */
+
+
+h1, h2, h3, h4, h5, h6 {
+    color: #5B9CBA;
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+}
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight: inherit; color: #5B9CBA; text-decoration:none;  }
+
+@media only screen and (min-width: 100px) {
+    h1 { font-size: 28px; line-height: 32px; margin-bottom: 14px; }
+    h2 { font-size: 24px; line-height: 28px; margin-bottom: 10px; }
+    h3 { font-size: 20px; line-height: 24px; margin-bottom: 8px; }
+    h4 { font-size: 16px; line-height: 20px; margin-bottom: 5px; }
+    h5 { font-size: 12px; line-height: 16px; margin-bottom: 2px; }
+    h6 { font-size: 12px; line-height: 16px; }
+}
+
+@media only screen and (min-width: 480px) {
+    h1 { font-size: 34px; line-height: 38px; margin-bottom: 14px; }
+    h2 { font-size: 30px; line-height: 34px; margin-bottom: 10px; }
+    h3 { font-size: 26px; line-height: 30px; margin-bottom: 8px; }
+    h4 { font-size: 22px; line-height: 26px; margin-bottom: 5px; }
+    h5 { font-size: 18px; line-height: 24px; margin-bottom: 5px; }
+    h6 { font-size: 14px; line-height: 18px; }
+}
+
+@media only screen and (min-width: 768px) {
+    h1 { font-size: 28px; line-height: 32px; margin-bottom: 14px; }
+    h2 { font-size: 24px; line-height: 28px; margin-bottom: 10px; }
+    h3 { font-size: 20px; line-height: 24px; margin-bottom: 8px; }
+    h4 { font-size: 16px; line-height: 20px; margin-bottom: 5px; }
+    h5 { font-size: 12px; line-height: 16px; margin-bottom: 5px; }
+    h6 { font-size: 12px; line-height: 16px; }
+}
+
+@media only screen and (min-width: 960px) {
+    h1 { font-size: 34px; line-height: 38px; margin-bottom: 14px; }
+    h2 { font-size: 30px; line-height: 34px; margin-bottom: 10px; }
+    h3 { font-size: 24px; line-height: 30px; margin-bottom: 8px; }
+    h4 { font-size: 20px; line-height: 26px; margin-bottom: 5px; }
+    h5 { font-size: 18px; line-height: 24px; margin-bottom: 5px; }
+    h6 { font-size: 14px; line-height: 18px; }
+}
+
+@media only screen and (min-width: 1024px) {
+    h1 { font-size: 40px; line-height: 50px; margin-bottom: 14px; }
+    h2 { font-size: 32px; line-height: 40px; margin-bottom: 10px; }
+    h3 { font-size: 26px; line-height: 34px; margin-bottom: 8px; }
+    h4 { font-size: 20px; line-height: 30px; margin-bottom: 5px; }
+    h5 { font-size: 18px; line-height: 24px; margin-bottom: 5px; }
+    h6 { font-size: 14px; line-height: 21px; }
+}
+@media only screen and (min-width: 2048px) {
+    h1 { font-size: 46px; line-height: 50px; margin-bottom: 14px; }
+    h2 { font-size: 35px; line-height: 40px; margin-bottom: 10px; }
+    h3 { font-size: 28px; line-height: 34px; margin-bottom: 8px; }
+    h4 { font-size: 21px; line-height: 30px; margin-bottom: 5px; }
+    h5 { font-size: 18px; line-height: 24px; margin-bottom: 5px; }
+    h6 { font-size: 14px; line-height: 21px; }
+}
+
+h1.black, h2.black, h3.black, h4.black, h5.black, h6.black {
+    color: #000!important;
+}
+
+h1.nomargin, h2.nomargin, h3.nomargin, h4.nomargin, h5.nomargin, h6.nomargin {
+    margin-bottom: 0;
+}
+
+.uppercase {
+    text-transform: uppercase!important;
+}
+.subheader { color: #B2B2B2; font-family: 'gothammediumitalic', sans-serif; }
+
+.gray { color: #B2B2B2; }
+.blue { color: #5B9CBA; }
+
+.bold { font-weight:  bold; }
+
+.subheader a { color: #B2B2B2 !important; text-decoration:none;    }
+
+p { margin: 0 0 20px 0; }
+p img { margin: 0; }
+p.lead { font-size: 21px; line-height: 27px; color: #777;  }
+
+em { font-style: italic; }
+strong { font-weight: bold; color: #333; }
+small { font-size: 80%; }
+
+/*	Blockquotes  */
+blockquote, blockquote p { font-size: 17px; line-height: 24px; color: #777; font-style: italic; }
+blockquote { margin: 0 0 20px; padding: 9px 20px 0 19px; border-left: 1px solid #ddd; }
+blockquote cite { display: block; font-size: 12px; color: #555; }
+blockquote cite:before { content: "\2014 \0020"; }
+blockquote cite a, blockquote cite a:visited, blockquote cite a:visited { color: #555; }
+
+hr { border: solid #ddd; border-width: 1px 0 0; clear: both; margin: 10px 0 30px; height: 0; }
+
+/* One Year Bible */
+#biblenav {
+    position: fixed;
+    width: 100%;
+    z-index: 9999999999;
+    background: white;
+}
+#biblenav ul {
+    margin-bottom:0 !important;
+}
+#biblenav ul li {
+    border-bottom: 1px solid #d7d7d7;
+    cursor: pointer;
+    display: inline-block;
+    float: left;
+    font-weight: bold;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    width: 19.9%;
+    margin-bottom:0 !important;
+}
+#biblenav ul li:before {
+    background: #d7d7d7;
+    content: '';
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 1px;
+}
+
+#biblenav ul li:last-child:before {
+    background: #fff;
+}
+#biblenav ul li.active:after {
+    background: #4D9DB7;
+    content: '';
+    height: 5px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+#logo.bible {
+    display: none;
+}
+
+#logo.bible.show {
+    display: block;
+}
+#translation {
+    opacity: 0;
+    cursor: pointer;
+    display: block;
+    height: 100%;
+    margin: 0;
+    width: 100%;
+}
+#translation-select {
+    display: none;
+    background: url(../images/dots.png) center center no-repeat;
+    background-size: contain;
+    float: right;
+    position: relative;
+}
+#translation-select.show {
+    display: block;
+}
+.bible-title {
+    font-size: 130%;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.bible-author {
+    font-size: 120%;
+    text-align: center;
+    color: #b2b2b2;
+    margin-bottom: 10px;
+}
+
+.bible-content {
+    margin-bottom: 50px;
+}
+
+span.woj {color: #B20000;}
+span.small-caps {text-transform: uppercase;}
+span.chapternum {font-weight: 600;}
+sup.versenum {font-size: 9px;}
+.poetry {
+    text-indent: 0em;
+    margin-bottom: 2em;
+}
+.poetry p {margin-bottom: 5px;}
+
+#tab-pr.poetry {display: block;}
+footnote {display: none;}
+crossreference {display: none;}
+a.bibleref {display: none;}
+p.hang-1 {text-indent: 0px;}
+p.left-2 {text-align: right;}
+p.indent-1 {text-indent: 0em;}
+p.top-1 {margin-top: 1em;}
+p.left-2 {text-align: left;}
+
+#bible a.btn.reverse {margin-bottom: 40px;}
+
+#bible a.bible-gateway {
+    background: url(/images/site/bible/bible-gateway-black.png) no-repeat;
+    width: 166px;
+    height: 35px;
+    display: block;
+    margin: 10px 0 30px;
+    float: right;
+}
+
+#bible a.bible-gateway span.bg {display: none;}
+
+#bible td.date a.day {
+    font-weight: bold;
+    font-size: 24px;
+    padding: 20px;
+} 
+
+#bible td.date {
+    vertical-align: middle;
+    text-align: center;
+    padding: 0;
+}
+
+#bible .dropdown {
+    width: 80px;
+    overflow: hidden;
+}
+
+#bible ul {background: #fff;}
+
+#bible ul li a:hover {background: #1a7bad;}
+</style>
+</head>
+<body>
+{{BIBLETEXT}}
+</body>
+</html>
